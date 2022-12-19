@@ -1,11 +1,16 @@
 #ifndef POKEMON_H_INCLUDED
 #define POKEMON_H_INCLUDED
 #include <iostream>
+#include <string>
+#define next(P) (P)->next
+#define info(P) (P)->info
+#define first(L) ((L).first)
 
 using namespace std;
 
 struct pokemon{
-    string idPokemon, namaPokemon, type1, type2
+    int idPokemon;
+    string namaPokemon, type1, type2;
 };
 
 typedef pokemon infoPokemon;
@@ -21,8 +26,8 @@ struct ListPokemon{
 };
 
 void createListPokemon(ListPokemon &L);
-adrPokemon createNodePokemon(string p[3][151]);
-void insertFirstPokemon(ListPokemon &L, adrPokemon newPokemon);
+adrPokemon createNodePokemon(string p[3][151], int baris, int kolom);
+void insertLastPokemon(ListPokemon &L, adrPokemon newPokemon);
 void showPokemon(ListPokemon &L);
 
 

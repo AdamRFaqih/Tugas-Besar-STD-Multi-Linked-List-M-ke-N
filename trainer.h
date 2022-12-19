@@ -4,7 +4,7 @@
 
 struct trainer{
     string idTrainer, namaTrainer;
-    bool pokedex[150];
+    bool pokedex[151];
 };
 
 typedef trainer infoTrainer;
@@ -39,6 +39,6 @@ bool checkPokemonInTrainer(adrTrainer pointTrainer, string idPokemon);
 void tradePokemonInPocket(ListTrainer &L, ListPokemon M, string idTrainer, string idPokemon);
 void showAllTrainer(ListTrainer L, ListPokemon M);
 void showTrainerDetail(ListTrainer L, ListPokemon M, string idTrainer);
-void showTrainerPokedex(ListTrainer L, string idTrainer, string p[3][150])
+void showTrainerPokedex(ListTrainer L, string idTrainer, string p[3][151], int baris, int kolom)
 
 #endif // TRAINER_H_INCLUDED
