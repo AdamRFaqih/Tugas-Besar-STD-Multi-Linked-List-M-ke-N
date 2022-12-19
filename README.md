@@ -25,3 +25,12 @@ Info dari pokemon berisi IdPokemon: string, nama: string, type1: string, type2: 
 
 Trainer mendapatkan pokemon dengan melempar pokeball
 
+------------------------------------------------LOG TUBES------------------------------------------------------------
+19/12/2022
+[Problem]--------------------------------------------
+- Kebingungan mencari pengubah string to int
+- 
+
+[Problem Solved]--------------------------------------------
+- 
+
