@@ -1,10 +1,16 @@
 #ifndef TRAINER_H_INCLUDED
 #define TRAINER_H_INCLUDED
 #include "pokemon.h"
+#define info(p) (p)->info
+#define next(p) (p)->next
+#define pocket(p) (p)->pocket
+#define pocketPokemon(p) (p)->pocketPokemon
+#define first(L) ((L).first)
 
 struct trainer{
-    string idTrainer, namaTrainer;
-    bool pokedex[150];
+    string idTrainer;
+    string namaTrainer;
+    bool pokedex[152];
 };
 
 typedef trainer infoTrainer;
@@ -39,6 +45,6 @@ bool checkPokemonInTrainer(adrTrainer pointTrainer, string idPokemon);
 void tradePokemonInPocket(ListTrainer &L, ListPokemon M, string idTrainer, string idPokemon);
 void showAllTrainer(ListTrainer L, ListPokemon M);
 void showTrainerDetail(ListTrainer L, ListPokemon M, string idTrainer);
-void showTrainerPokedex(ListTrainer L, string idTrainer, string p[3][150])
+void showTrainerPokedex(ListTrainer L, string idTrainer, string p[4][152]);
 
 #endif // TRAINER_H_INCLUDED

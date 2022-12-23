@@ -5,7 +5,7 @@
 using namespace std;
 
 struct pokemon{
-    string idPokemon, namaPokemon, type1, type2
+    string idPokemon, namaPokemon, type1, type2;
 };
 
 typedef pokemon infoPokemon;
