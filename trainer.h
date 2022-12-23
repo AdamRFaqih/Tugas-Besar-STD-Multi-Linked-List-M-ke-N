@@ -40,7 +40,7 @@ bool checkPointTrainer(adrTrainer pointTrainer);
 bool checkPocket(adrTrainer pointTrainer);
 void deleteFirstPocket(ListTrainer &L, adrTrainer pointTrainer);
 bool checkDupe(adrTrainer pointTrainer, string idPokemon);
-void insertLastPocket(ListTrainer L, adrTrainer pointTrainer);
+void insertLastPocket(ListTrainer &L, adrTrainer pointTrainer);
 bool checkPokemonInTrainer(adrTrainer pointTrainer, string idPokemon);
 void tradePokemonInPocket(ListTrainer &L, ListPokemon M, string idTrainer, string idPokemon);
 void showAllTrainer(ListTrainer L, ListPokemon M);
