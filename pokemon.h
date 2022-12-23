@@ -21,8 +21,13 @@ struct ListPokemon{
 };
 
 void createListPokemon(ListPokemon &L);
+<<<<<<< Updated upstream
 adrPokemon createNodePokemon(string p[3][151]);
 void insertFirstPokemon(ListPokemon &L, adrPokemon newPokemon);
+=======
+adrPokemon createNodePokemon(string p[4][152], int baris, int kolom);
+void insertLastPokemon(ListPokemon &L, adrPokemon newPokemon);
+>>>>>>> Stashed changes
 void showPokemon(ListPokemon &L);
 
 
