@@ -10,6 +10,7 @@ adrTrainer createNodeTrainer(string idTrainer, string namaTrainer){
     q.namaTrainer = namaTrainer;
     q.pokedex[152] = {false};
 
+
     p = new nodeTrainer;
     info(p) = q;
     next(p) = NULL;
@@ -33,7 +34,6 @@ adrTrainer selectTrainer(ListTrainer L, string idTrainer){
     while(p != NULL){
         if(info(p).idTrainer == idTrainer){
             return p;
-            break;
         }
         p = next(p);
     }
@@ -43,16 +43,29 @@ bool checkPointTrainer(adrTrainer pointTrainer){
     return pointTrainer != NULL;
 }
 bool checkPocket(adrTrainer pointTrainer){
-    return pointTrainer != NULL;
+    int s = 0;
+    adrPocket p = pocket(pointTrainer);
+    while(p != NULL){
+        s++;
+        next(p);
+    }
+    if(s < 6){
+        return true;
+    }
+    return false;
 }
 void deleteFirstPocket(ListTrainer &L, adrTrainer pointTrainer){
-    if(next(pocket(pointTrainer)) == NULL){
-        pocket(pointTrainer) = NULL;
+    if(checkPointTrainer(pointTrainer) != false && checkPocket(pointTrainer) != false){
+        if(next(pocket(pointTrainer)) == NULL){
+            pocket(pointTrainer) = NULL;
+        }else{
+            adrPocket p;
+            p = pocket(pointTrainer);
+            pocket(pointTrainer) = next(p);
+            next(p) = NULL;
+        }
     }else{
-        adrPocket p;
-        p = pocket(pointTrainer);
-        pocket(pointTrainer) = next(p);
-        next(p) = NULL;
+        cout <<"Pointer atau pocket false\n";
     }
 }
 bool checkDupe(adrTrainer pointTrainer, string idPokemon){
@@ -69,8 +82,39 @@ bool checkDupe(adrTrainer pointTrainer, string idPokemon){
     }
     return r;
 }
-void insertLastPocket(ListTrainer &L, adrTrainer pointTrainer){
+
+adrPocket createNodePocket(ListPokemon L, string idPokemon){
+    adrPokemon p = cariPokemon(L, idPokemon);
+    adrPocket q = new nodePocket;
+    pocketPokemon(q) = p;
+    next(q) = NULL;
+
+    return q;
 
 }
-
+adrPokemon cariPokemon(ListPokemon L, string idPokemon){
+    adrPokemon p = first(L);
+    while(p != NULL){
+        if(info(p).idPokemon == idPokemon){
+            return p;
+        }
+        p = next(p);
+    }
+}
+void insertLastPocket(ListTrainer &L, ListPokemon S,adrTrainer pointTrainer,string idPokemon){
+    if(!checkDupe(pointTrainer, idPokemon)){
+        adrPocket q = createNodePocket(S, idPokemon);
+        if(pocket(pointTrainer) == NULL){
+            pocket(pointTrainer) = q;
+        }else{
+            adrPocket p = pocket(pointTrainer);
+            while(next(p) != NULL){
+                p = next(p);
+            }
+            next(p) = q;
+        }
+    }else{
+        cout <<"Pokemon Duplikat\n";
+    }
+}
 
