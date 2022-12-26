@@ -45,3 +45,32 @@ bool checkPointTrainer(adrTrainer pointTrainer){
 bool checkPocket(adrTrainer pointTrainer){
     return pointTrainer != NULL;
 }
+void deleteFirstPocket(ListTrainer &L, adrTrainer pointTrainer){
+    if(next(pocket(pointTrainer)) == NULL){
+        pocket(pointTrainer) = NULL;
+    }else{
+        adrPocket p;
+        p = pocket(pointTrainer);
+        pocket(pointTrainer) = next(p);
+        next(p) = NULL;
+    }
+}
+bool checkDupe(adrTrainer pointTrainer, string idPokemon){
+    adrPocket q = pocket(pointTrainer);
+    adrPokemon s;
+    bool r = false;
+    while(q != NULL){
+        s = pocketPokemon(q);
+        if(info(s).idPokemon == idPokemon){
+            r = true;
+            break;
+        }
+        q = next(q);
+    }
+    return r;
+}
+void insertLastPocket(ListTrainer &L, adrTrainer pointTrainer){
+
+}
+
+
