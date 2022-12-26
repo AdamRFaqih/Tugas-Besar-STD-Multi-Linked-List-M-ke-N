@@ -4,7 +4,7 @@ void createListPokemon(ListPokemon &L){
     L.first = NULL;
 }
 
-adrPokemon createNodePokemon(string p[3][151]){
+adrPokemon createNodePokemon(string p[4][153]){
     adrPokemon newPokemon = new nodePokemon;
 }
 
