@@ -1,5 +1,6 @@
 #ifndef TRAINER_H_INCLUDED
 #define TRAINER_H_INCLUDED
+#include <sstream>
 #include "pokemon.h"
 #define info(p) (p)->info
 #define next(p) (p)->next
@@ -40,7 +41,9 @@ bool checkPointTrainer(adrTrainer pointTrainer);
 bool checkPocket(adrTrainer pointTrainer);
 void deleteFirstPocket(ListTrainer &L, adrTrainer pointTrainer);
 bool checkDupe(adrTrainer pointTrainer, string idPokemon);
-void insertLastPocket(ListTrainer &L, adrTrainer pointTrainer);
+void insertLastPocket(ListTrainer &L, adrTrainer pointTrainer,string idPokemon);
+adrPokemon cariPokemon(ListPokemon L, string idPokemon);
+adrPocket createNodePocket(ListPokemon L, string idPokemon);
 bool checkPokemonInTrainer(adrTrainer pointTrainer, string idPokemon);
 void tradePokemonInPocket(ListTrainer &L, ListPokemon M, string idTrainer, string idPokemon);
 void showAllTrainer(ListTrainer L, ListPokemon M);
