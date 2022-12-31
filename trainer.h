@@ -42,14 +42,15 @@ bool checkPointTrainer(adrTrainer pointTrainer);
 bool checkPocket(adrTrainer pointTrainer);
 void deleteFirstPocket(ListTrainer &L, adrTrainer pointTrainer);
 bool checkDupe(adrTrainer pointTrainer, string idPokemon);
-void insertLastPocket(ListTrainer &L, adrTrainer pointTrainer,string idPokemon);
+void insertLastPocket(ListTrainer &L, ListPokemon S,adrTrainer pointTrainer,string idPokemon);
 adrPokemon cariPokemon(ListPokemon L, string idPokemon);
 adrPocket createNodePocket(ListPokemon L, string idPokemon);
 bool checkPokemonInTrainer(adrTrainer pointTrainer, string idPokemon);
-void tradePokemonInPocket(ListTrainer &L, ListPokemon M, string idTrainer, string idPokemon);
+void tradePokemonInPocket(ListTrainer &L, ListPokemon &M, string idTrainer, string idPokemon);
 void showAllTrainer(ListTrainer L, ListPokemon M);
 void showTrainerDetail(ListTrainer L, ListPokemon M, string idTrainer);
 void showTrainerPokedex(adrTrainer pilihanTrainer);
 string RNGpokemon(ListPokemon M);
+string selectedTrainer(adrTrainer selectedS);
 
 #endif // TRAINER_H_INCLUDED

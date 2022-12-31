@@ -46,19 +46,20 @@ bool checkPointTrainer(adrTrainer pointTrainer){
     return pointTrainer != NULL;
 }
 bool checkPocket(adrTrainer pointTrainer){
-    int s = 0;
+    int s = 1;
     adrPocket p = pocket(pointTrainer);
     while(p != NULL){
         s++;
         p = next(p);
     }
-    if(s < 6){
+    if(s == 6){
         return true;
+    }else{
+        return false;
     }
-    return false;
 }
 void deleteFirstPocket(ListTrainer &L, adrTrainer pointTrainer){
-    if(checkPointTrainer(pointTrainer) != false && checkPocket(pointTrainer) != false){
+    if(checkPointTrainer(pointTrainer) == false && checkPocket(pointTrainer) == true){
         if(next(pocket(pointTrainer)) == NULL){
             pocket(pointTrainer) = NULL;
         }else{
@@ -67,8 +68,6 @@ void deleteFirstPocket(ListTrainer &L, adrTrainer pointTrainer){
             pocket(pointTrainer) = next(p);
             next(p) = NULL;
         }
-    }else{
-        cout <<"Pointer atau pocket false\n";
     }
 }
 //Mencari input idpokemon yang sama di idpokemon yang di trainer
@@ -110,7 +109,8 @@ adrPokemon cariPokemon(ListPokemon L, string idPokemon){
     return q;
 }
 void insertLastPocket(ListTrainer &L, ListPokemon S,adrTrainer pointTrainer,string idPokemon){
-    if(!checkDupe(pointTrainer, idPokemon)){
+    int r = 0;
+    if(checkDupe(pointTrainer, idPokemon) == false){
         adrPocket q = createNodePocket(S, idPokemon);
         if(pocket(pointTrainer) == NULL){
             pocket(pointTrainer) = q;
@@ -121,6 +121,9 @@ void insertLastPocket(ListTrainer &L, ListPokemon S,adrTrainer pointTrainer,stri
             }
             next(p) = q;
         }
+        stringstream chng(idPokemon);
+        chng >> r;
+        info(pointTrainer).pokedex[r] = true;
     }else{
         cout <<"Pokemon Duplikat\n";
     }
@@ -175,7 +178,7 @@ void showTrainerPokedex(adrTrainer pilihanTrainer){
         }
         i++;
     }
-    cout <<"Pokemon Completion: " <<(r/152) * 0.01 << endl;
+    cout <<"Pokemon Completion: " <<(r/152) * 100 << endl;
 }
 
 //Pengecekan idpokemon di pocket milik trainer
@@ -192,13 +195,11 @@ void tradePokemonInPocket(ListTrainer &L, ListPokemon &M, string idTrainer, stri
     p = selectTrainer(L, idTrainer);
     cout <<"Masukan id Trainer yang akan menjadi target trade: ";
     cin >> r;
-    cout << endl;
     //adrTrainer 2
     q = selectTrainer(L, r);
     if(p != NULL && q != NULL){
         cout <<"Masukan id pokemon yang akan menjadi target trade: ";
         cin >> rr;
-        cout << endl;
         //Pengecekan pokemon trainer 1 ada di pocket
         z = checkDupe(p,idPokemon);
         //Pengecekan pokemon trainer 2 ada di pocket
@@ -229,6 +230,7 @@ void tradePokemonInPocket(ListTrainer &L, ListPokemon &M, string idTrainer, stri
                     }
                     h = next(h);
                 }
+                cout <<"Trade Berhasil\n";
             }else{
                 cout <<"Salah satu Pokemon duplikat!\n";
             }
@@ -253,5 +255,10 @@ string RNGpokemon(ListPokemon M){
     return info(p).idPokemon;
 }
 
-
-
+string selectedTrainer(adrTrainer selectedS){
+    if(selectedS == NULL){
+        return "";
+    }else{
+        return info(selectedS).namaTrainer;
+    }
+}

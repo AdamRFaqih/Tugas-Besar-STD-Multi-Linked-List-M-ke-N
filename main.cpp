@@ -11,8 +11,9 @@ int main()
     };
 
     int numMenu = 1;
-    string id, nama;
-    adrTrainer r;
+    string id, nama, idtrainerM, idpokeM;
+    adrTrainer r,a;
+    a = NULL;
     adrPocket q;
     adrPokemon s;
     /*
@@ -41,6 +42,7 @@ int main()
         cout <<"7. Show All Pokemon" << endl;
         cout <<"0. Exit" << endl;
         cout <<"------------------------------------------------------" << endl;
+        cout << "Selected Trainer: " << selectedTrainer(a) << endl;
         cout <<"Masukan Nomor Menu: ";
         cin >> numMenu;
         switch(numMenu){
@@ -58,17 +60,38 @@ int main()
         case 3:
             cout << "Masukan id: ";
             cin >> id;
-            r = selectTrainer(T, id);
+            a = selectTrainer(T, id);
             break;
         case 4:
+            //ada masalah ketika idTrainernya kosong
+            showTrainerDetail(T,L,info(a).idTrainer);
             break;
         case 5:
+            deleteFirstPocket(T, a);
+            s = cariPokemon(L, RNGpokemon(L));
+            cout << "you Catch " << info(s).namaPokemon << endl;;
+            insertLastPocket(T,L,a,info(s).idPokemon);
             break;
         case 6:
+            cout <<"Masukan id Trainer: ";
+            cin >> idtrainerM;
+            cout << "Masukan id pokemon yang ingin di trade: ";
+            cin >> idpokeM;
+            tradePokemonInPocket(T,L,idtrainerM,idpokeM);
             break;
         case 7:
+            showPokemon(L);
             break;
         }
     }
     cout <<"Game Ended" << endl;
 }
+
+/*BUG
+- gak nambah pocket pokemon
+- show all trainer ketika idnya ""
+-
+
+SOLUTION
+- buat semua adr dalam parameter menjadi null untuk inisialisasinya
+*/
