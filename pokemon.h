@@ -29,7 +29,7 @@ struct ListPokemon{
 void createListPokemon(ListPokemon &L);
 adrPokemon createNodePokemon(string p[3][151]);
 void insertFirstPokemon(ListPokemon &L, adrPokemon newPokemon);
-void showPokemon(ListPokemon &L);
-
+void showPokemon(ListPokemon L);
+void addPokemon(ListPokemon &L, string p[4][152]);
 
 #endif // POKEMON_H_INCLUDED

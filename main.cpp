@@ -21,4 +21,10 @@ int main()
     cout << r + 1;
     */
 
+
+    //Initialize Pokemon (show buat ngetes doang jadi bisa dihapus)
+    ListPokemon L;
+    addPokemon(L, p);
+    showPokemon(L);
+
 }
