@@ -33,8 +33,14 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="main.cpp" />
+		<Unit filename="pokemon.cpp">
+			<Option target="Debug" />
+		</Unit>
 		<Unit filename="pokemon.h">
 			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="trainer.cpp">
+			<Option target="Debug" />
 		</Unit>
 		<Unit filename="trainer.h">
 			<Option target="&lt;{~None~}&gt;" />

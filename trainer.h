@@ -1,10 +1,18 @@
 #ifndef TRAINER_H_INCLUDED
 #define TRAINER_H_INCLUDED
+#include <sstream>
+#include <time.h>
 #include "pokemon.h"
+#define info(p) (p)->info
+#define next(p) (p)->next
+#define pocket(p) (p)->pocket
+#define pocketPokemon(p) (p)->pocketPokemon
+#define first(L) ((L).first)
 
 struct trainer{
-    string idTrainer, namaTrainer;
-    bool pokedex[150];
+    string idTrainer;
+    string namaTrainer;
+    bool pokedex[152];
 };
 
 typedef trainer infoTrainer;
@@ -34,11 +42,14 @@ bool checkPointTrainer(adrTrainer pointTrainer);
 bool checkPocket(adrTrainer pointTrainer);
 void deleteFirstPocket(ListTrainer &L, adrTrainer pointTrainer);
 bool checkDupe(adrTrainer pointTrainer, string idPokemon);
-void insertLastPocket(ListTrainer L, adrTrainer pointTrainer);
+void insertLastPocket(ListTrainer &L, adrTrainer pointTrainer,string idPokemon);
+adrPokemon cariPokemon(ListPokemon L, string idPokemon);
+adrPocket createNodePocket(ListPokemon L, string idPokemon);
 bool checkPokemonInTrainer(adrTrainer pointTrainer, string idPokemon);
 void tradePokemonInPocket(ListTrainer &L, ListPokemon M, string idTrainer, string idPokemon);
 void showAllTrainer(ListTrainer L, ListPokemon M);
 void showTrainerDetail(ListTrainer L, ListPokemon M, string idTrainer);
-void showTrainerPokedex(ListTrainer L, string idTrainer, string p[3][150])
+void showTrainerPokedex(adrTrainer pilihanTrainer);
+string RNGpokemon(ListPokemon M);
 
 #endif // TRAINER_H_INCLUDED

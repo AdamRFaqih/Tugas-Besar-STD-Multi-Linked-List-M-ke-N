@@ -3,9 +3,15 @@
 #include <iostream>
 
 using namespace std;
+#define info(p) (p)->info
+#define next(p) (p)->next
+#define first(L) ((L).first)
 
 struct pokemon{
-    string idPokemon, namaPokemon, type1, type2
+    string idPokemon;
+    string namaPokemon;
+    string type1;
+    string type2;
 };
 
 typedef pokemon infoPokemon;
@@ -23,7 +29,7 @@ struct ListPokemon{
 void createListPokemon(ListPokemon &L);
 adrPokemon createNodePokemon(string p[3][151]);
 void insertFirstPokemon(ListPokemon &L, adrPokemon newPokemon);
-void showPokemon(ListPokemon &L);
-
+void showPokemon(ListPokemon L);
+void addPokemon(ListPokemon &L, string p[4][152]);
 
 #endif // POKEMON_H_INCLUDED
