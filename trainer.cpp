@@ -240,6 +240,18 @@ void tradePokemonInPocket(ListTrainer &L, ListPokemon &M, string idTrainer, stri
     }
 }
 
+string RNGpokemon(ListPokemon M){
+    int i,randomNum;
+    srand (time(NULL));
+    randomNum = rand() % 4;
+    adrPokemon p = first(M);
+    i = 1;
+    while(i <= randomNum){
+        p = next(p);
+        i++;
+    }
+    return info(p).idPokemon;
+}
 
 
 

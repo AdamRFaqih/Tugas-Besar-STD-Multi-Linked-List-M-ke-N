@@ -1,6 +1,7 @@
 #ifndef TRAINER_H_INCLUDED
 #define TRAINER_H_INCLUDED
 #include <sstream>
+#include <time.h>
 #include "pokemon.h"
 #define info(p) (p)->info
 #define next(p) (p)->next
@@ -49,5 +50,6 @@ void tradePokemonInPocket(ListTrainer &L, ListPokemon M, string idTrainer, strin
 void showAllTrainer(ListTrainer L, ListPokemon M);
 void showTrainerDetail(ListTrainer L, ListPokemon M, string idTrainer);
 void showTrainerPokedex(adrTrainer pilihanTrainer);
+string RNGpokemon(ListPokemon M);
 
 #endif // TRAINER_H_INCLUDED
