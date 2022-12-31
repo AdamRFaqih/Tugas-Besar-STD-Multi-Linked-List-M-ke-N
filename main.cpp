@@ -21,7 +21,8 @@ int main()
     cout << id;
     cout << r + 1;
     */
-
+    ListPokemon L;
+    addPokemon(L, p);
     while(numMenu != 0){
         //Spek Menu
         cout <<"---------------------MENU-----------------------------" << endl;
