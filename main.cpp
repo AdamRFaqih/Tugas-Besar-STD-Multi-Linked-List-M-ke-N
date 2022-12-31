@@ -40,6 +40,7 @@ int main()
         cout <<"5. Catch Pokemon" << endl;
         cout <<"6. Trade Pokemon" << endl;
         cout <<"7. Show All Pokemon" << endl;
+        cout <<"8. Delete Trainer" << endl;
         cout <<"0. Exit" << endl;
         cout <<"------------------------------------------------------" << endl;
         cout << "Selected Trainer: " << selectedTrainer(a) << endl;
@@ -64,12 +65,17 @@ int main()
             break;
         case 4:
             //ada masalah ketika idTrainernya kosong
-            showTrainerDetail(T,L,info(a).idTrainer);
+            {showTrainerDetail(T,L,info(a).idTrainer);
+            int i = 1;
+            while (i <= 151){
+                cout << info(a).pokedex[i] << ";";
+                i++;
+            }}
             break;
         case 5:
             deleteFirstPocket(T, a);
             s = cariPokemon(L, RNGpokemon(L));
-            cout << "you Catch " << info(s).namaPokemon << endl;;
+            cout << "you Catch " << info(s).namaPokemon << endl;
             insertLastPocket(T,L,a,info(s).idPokemon);
             break;
         case 6:
@@ -81,6 +87,11 @@ int main()
             break;
         case 7:
             showPokemon(L);
+            break;
+        case 8:
+            cout << "Masukan ID: ";
+            cin >> id;
+            deleteTrainer(T, id);
             break;
         }
     }

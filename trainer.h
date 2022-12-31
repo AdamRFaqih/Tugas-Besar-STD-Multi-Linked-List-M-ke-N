@@ -52,5 +52,9 @@ void showTrainerDetail(ListTrainer L, ListPokemon M, string idTrainer);
 void showTrainerPokedex(adrTrainer pilihanTrainer);
 string RNGpokemon(ListPokemon M);
 string selectedTrainer(adrTrainer selectedS);
+void deleteFirstTrainer(ListTrainer &L);
+void deleteLastTrainer(ListTrainer &L);
+void deleteTrainer(ListTrainer &L, string idTrainer);
+
 
 #endif // TRAINER_H_INCLUDED

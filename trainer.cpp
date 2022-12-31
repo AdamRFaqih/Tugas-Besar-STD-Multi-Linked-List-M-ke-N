@@ -140,7 +140,7 @@ void showAllTrainer(ListTrainer L, ListPokemon M){
                 q = pocket(p);
                 while(q != NULL){
                     s = pocketPokemon(q);
-                    cout << info(s).namaPokemon << " / ";
+                    cout << " {" << info(s).namaPokemon << "} ";
                     q = next(q);
                 }
             cout << endl;
@@ -159,7 +159,7 @@ void showTrainerDetail(ListTrainer L, ListPokemon M, string idTrainer){
         q = pocket(p);
         while(q != NULL){
             s = pocketPokemon(q);
-            cout << info(s).namaPokemon << " / ";
+            cout << " {" << info(s).namaPokemon << "} ";
             q = next(q);
         }
         //print pokedex punya trainer
@@ -172,13 +172,13 @@ void showTrainerPokedex(adrTrainer pilihanTrainer){
     int i,r;
     i = 1;
     r = 0;
-    while(i <= 152){
+    while(i <= 151){
         if(info(pilihanTrainer).pokedex[i] == true){
             r++;
         }
         i++;
     }
-    cout <<"Pokemon Completion: " <<(r/152) * 100 << endl;
+    cout <<"Pokemon Completion: " << r << endl;
 }
 
 //Pengecekan idpokemon di pocket milik trainer
@@ -245,7 +245,7 @@ void tradePokemonInPocket(ListTrainer &L, ListPokemon &M, string idTrainer, stri
 string RNGpokemon(ListPokemon M){
     int i,randomNum;
     srand (time(NULL));
-    randomNum = rand() % 4;
+    randomNum = rand() % 151;
     adrPokemon p = first(M);
     i = 1;
     while(i <= randomNum){
@@ -260,5 +260,44 @@ string selectedTrainer(adrTrainer selectedS){
         return "";
     }else{
         return info(selectedS).namaTrainer;
+    }
+}
+
+void deleteFirstTrainer(ListTrainer &L){
+    adrTrainer P = first(L);
+    first(L) = next(first(L));
+    next(P) = NULL;
+}
+
+void deleteLastTrainer(ListTrainer &L){
+    adrTrainer P = first(L), Q = first(L);
+    while (next(P) != NULL){
+        Q = P;
+        P = next(P);
+    }
+    next(Q) = NULL;
+}
+
+void deleteAfterTrainer(ListTrainer &L, string idTrainer){
+    adrTrainer P = first(L), Q = first(L);
+    while (info(P).idTrainer != idTrainer){
+        Q = P;
+        P = next(P);
+    }
+    next(Q) = next(next(P));
+    next(P) = NULL;
+}
+
+void deleteTrainer(ListTrainer &L, string idTrainer){
+    adrTrainer P = first(L);
+    while (next(P) != NULL){
+        P = next(P);
+    }
+    if (info(first(L)).idTrainer == idTrainer){
+        deleteFirstTrainer(L);
+    }else if (info(P).idTrainer == idTrainer){
+        deleteLastTrainer(L);
+    }else{
+        deleteAfterTrainer(L, idTrainer);
     }
 }
