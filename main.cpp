@@ -10,6 +10,7 @@ int main()
     /*TIPE 2 */         {"", "POISON","POISON","POISON","","","FLYING","","","","","","FLYING","POISON","POISON","POISON","FLYING","FLYING","FLYING","","","FLYING","FLYING","","","","","","","","","GROUND","","","GROUND","","","","","FAIRY","FAIRY","FLYING","FLYING","POISON","POISON","POISON","GRASS","GRASS","POISON","POISON","","","","","","","","","","","","","FIGHT","","","","","","","POISON","POISON","POISON","POISON","POISON","GROUND","GROUND","GROUND","","","PSYCHO","PSYCHO","STEEL","STEEL","FLYING","FLYING","FLYING","","ICE","","","","ICE","POISON","POISON","POISON","GROUND","","","","","","","PSYCHO","PSYCHO","","","","","","","","ROCK","ROCK","","","","","","","","","PSYCHO","FAIRY","FLYING","PSYCHO","","","","","","FLYING","ICE","","","","","","","WATER","WATER","WATER","WATER","FLYING","","FLYING","FLYING","FLYING","","","FLYING","",""}
     };
 
+    int numMenu = 1;
     /*
     (Metode pengubahan string ke int)
     int r;
@@ -21,10 +22,36 @@ int main()
     cout << r + 1;
     */
 
-
-    //Initialize Pokemon (show buat ngetes doang jadi bisa dihapus)
-    ListPokemon L;
-    addPokemon(L, p);
-    showPokemon(L);
-
+    while(numMenu != 0){
+        //Spek Menu
+        cout <<"---------------------MENU-----------------------------" << endl;
+        cout <<"1. Add Trainer" << endl;
+        cout <<"2. Show Trainer" << endl;
+        cout <<"3. Select Trainer" << endl;
+        cout <<"4. Show Trainer Detail" << endl;
+        cout <<"5. Catch Pokemon" << endl;
+        cout <<"6. Trade Pokemon" << endl;
+        cout <<"7. Show All Pokemon" << endl;
+        cout <<"0. Exit" << endl;
+        cout <<"------------------------------------------------------" << endl;
+        cout <<"Masukan Nomor Menu: ";
+        cin >> numMenu;
+        switch(numMenu){
+        case 1:
+            break;
+        case 2:
+            break;
+        case 3:
+            break;
+        case 4:
+            break;
+        case 5:
+            break;
+        case 6:
+            break;
+        case 7:
+            break;
+        }
+    }
+    cout <<"Game Ended" << endl;
 }
