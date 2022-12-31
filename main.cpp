@@ -11,6 +11,10 @@ int main()
     };
 
     int numMenu = 1;
+    string id, nama;
+    adrTrainer r;
+    adrPocket q;
+    adrPokemon s;
     /*
     (Metode pengubahan string ke int)
     int r;
@@ -22,6 +26,8 @@ int main()
     cout << r + 1;
     */
     ListPokemon L;
+    ListTrainer T;
+    first(T) = NULL;
     addPokemon(L, p);
     while(numMenu != 0){
         //Spek Menu
@@ -39,10 +45,20 @@ int main()
         cin >> numMenu;
         switch(numMenu){
         case 1:
+            cout << "Masukan ID: ";
+            cin >> id;
+            cout <<"Masukan nama: ";
+            cin >> nama;
+            r = createNodeTrainer(id,nama);
+            insertLastTrainer(T, r);
             break;
         case 2:
+            showAllTrainer(T,L);
             break;
         case 3:
+            cout << "Masukan id: ";
+            cin >> id;
+            r = selectTrainer(T, id);
             break;
         case 4:
             break;
