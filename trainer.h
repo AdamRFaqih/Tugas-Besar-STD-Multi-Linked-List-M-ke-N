@@ -48,6 +48,6 @@ bool checkPokemonInTrainer(adrTrainer pointTrainer, string idPokemon);
 void tradePokemonInPocket(ListTrainer &L, ListPokemon M, string idTrainer, string idPokemon);
 void showAllTrainer(ListTrainer L, ListPokemon M);
 void showTrainerDetail(ListTrainer L, ListPokemon M, string idTrainer);
-void showTrainerPokedex(ListTrainer L, string idTrainer, string p[4][152]);
+void showTrainerPokedex(adrTrainer pilihanTrainer);
 
 #endif // TRAINER_H_INCLUDED
