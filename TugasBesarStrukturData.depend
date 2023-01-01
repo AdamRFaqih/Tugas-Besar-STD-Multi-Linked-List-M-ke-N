@@ -2,10 +2,10 @@
 1584205420 source:d:\personal\coolyeah\tahun 2\std\tugasbesarstrukturdata\main.cpp
 	<iostream>
 
-1672501701 source:c:\sekolah\kuliah\semester 3\struktur data\tugas-besar-std-multi-linked-list-m-ke-n\main.cpp
+1672539960 source:c:\sekolah\kuliah\semester 3\struktur data\tugas-besar-std-multi-linked-list-m-ke-n\main.cpp
 	"trainer.h"
 
-1672501297 source:c:\sekolah\kuliah\semester 3\struktur data\tugas-besar-std-multi-linked-list-m-ke-n\trainer.cpp
+1672540166 source:c:\sekolah\kuliah\semester 3\struktur data\tugas-besar-std-multi-linked-list-m-ke-n\trainer.cpp
 	"trainer.h"
 
 1672484232 source:c:\sekolah\kuliah\semester 3\struktur data\tugas-besar-std-multi-linked-list-m-ke-n\pokemon.cpp
@@ -14,9 +14,10 @@
 1672484232 c:\sekolah\kuliah\semester 3\struktur data\tugas-besar-std-multi-linked-list-m-ke-n\pokemon.h
 	<iostream>
 
-1672499692 c:\sekolah\kuliah\semester 3\struktur data\tugas-besar-std-multi-linked-list-m-ke-n\trainer.h
+1672538925 c:\sekolah\kuliah\semester 3\struktur data\tugas-besar-std-multi-linked-list-m-ke-n\trainer.h
 	<sstream>
 	<time.h>
+	<stdbool.h>
 	"pokemon.h"
 
 1672520537 source:d:\personal\coolyeah\tahun 2\std\tugasbesarstrukturdata\tugas-besar-std-multi-linked-list-m-ke-n\trainer.cpp

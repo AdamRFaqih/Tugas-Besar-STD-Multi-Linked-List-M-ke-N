@@ -2,6 +2,7 @@
 #define TRAINER_H_INCLUDED
 #include <sstream>
 #include <time.h>
+#include <stdbool.h>
 #include "pokemon.h"
 #define info(p) (p)->info
 #define next(p) (p)->next

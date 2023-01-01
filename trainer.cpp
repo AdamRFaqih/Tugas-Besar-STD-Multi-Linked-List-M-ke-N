@@ -8,8 +8,11 @@ adrTrainer createNodeTrainer(string idTrainer, string namaTrainer){
     infoTrainer q;
     q.idTrainer = idTrainer;
     q.namaTrainer = namaTrainer;
-    q.pokedex[152] = {false};
-
+    int i = 0;
+    while(i != 152){
+        q.pokedex[i] = false;
+        i++;
+    }
 
     p = new nodeTrainer;
     info(p) = q;
@@ -46,7 +49,7 @@ bool checkPointTrainer(adrTrainer pointTrainer){
     return pointTrainer != NULL;
 }
 bool checkPocket(adrTrainer pointTrainer){
-    int s = 1;
+    int s = 0;
     adrPocket p = pocket(pointTrainer);
     while(p != NULL){
         s++;
@@ -59,7 +62,7 @@ bool checkPocket(adrTrainer pointTrainer){
     }
 }
 void deleteFirstPocket(ListTrainer &L, adrTrainer pointTrainer){
-    if(checkPointTrainer(pointTrainer) == false && checkPocket(pointTrainer) == true){
+    if(checkPointTrainer(pointTrainer) == true && checkPocket(pointTrainer) == true){
         if(next(pocket(pointTrainer)) == NULL){
             pocket(pointTrainer) = NULL;
         }else{
@@ -68,6 +71,7 @@ void deleteFirstPocket(ListTrainer &L, adrTrainer pointTrainer){
             pocket(pointTrainer) = next(p);
             next(p) = NULL;
         }
+        cout <<"-> One Pocket Sacrificed <- \n";
     }
 }
 //Mencari input idpokemon yang sama di idpokemon yang di trainer
@@ -125,7 +129,7 @@ void insertLastPocket(ListTrainer &L, ListPokemon S,adrTrainer pointTrainer,stri
         chng >> r;
         info(pointTrainer).pokedex[r] = true;
     }else{
-        cout <<"Pokemon Duplikat\n";
+        cout <<"-Pokemon Duplikat-\n";
     }
 }
 void showAllTrainer(ListTrainer L, ListPokemon M){
@@ -136,11 +140,11 @@ void showAllTrainer(ListTrainer L, ListPokemon M){
         adrPocket q;
         adrPokemon s;
         while(p != NULL){
-            cout << info(p).idTrainer << " " << info(p).namaTrainer<<"\nPokemon: ";
+            cout << "["<<info(p).idTrainer << "] " << "|"<<info(p).namaTrainer<<"|"<<"\nPokemon: ";
                 q = pocket(p);
                 while(q != NULL){
                     s = pocketPokemon(q);
-                    cout << " {" << info(s).namaPokemon << "} ";
+                    cout << "["<<info(s).idPokemon<<"]"<<"{" << info(s).namaPokemon << "} ";
                     q = next(q);
                 }
             cout << endl;
@@ -155,11 +159,11 @@ void showTrainerDetail(ListTrainer L, ListPokemon M, string idTrainer){
     }else{
         adrPocket q;
         adrPokemon s;
-        cout << info(p).idTrainer << " " << info(p).namaTrainer<<"\nPokemon: ";
+        cout << "["<<info(p).idTrainer << "] " << "|"<<info(p).namaTrainer<<"|"<<"\nPokemon: ";
         q = pocket(p);
         while(q != NULL){
             s = pocketPokemon(q);
-            cout << " {" << info(s).namaPokemon << "} ";
+            cout << "["<<info(s).idPokemon<<"]"<<"{" << info(s).namaPokemon << "} ";
             q = next(q);
         }
         //print pokedex punya trainer
@@ -178,7 +182,7 @@ void showTrainerPokedex(adrTrainer pilihanTrainer){
         }
         i++;
     }
-    cout <<"Pokemon Completion: " << r << endl;
+    cout <<"Pokemon Completion: " << r << "%\n";
 }
 
 //Pengecekan idpokemon di pocket milik trainer
@@ -300,4 +304,5 @@ void deleteTrainer(ListTrainer &L, string idTrainer){
     }else{
         deleteAfterTrainer(L, idTrainer);
     }
+    cout << "Delete Trainer Berhasil!\n";
 }

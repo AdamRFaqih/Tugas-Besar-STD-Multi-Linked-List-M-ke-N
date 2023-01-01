@@ -14,7 +14,6 @@ int main()
     string id, nama, idtrainerM, idpokeM;
     adrTrainer r,a;
     a = NULL;
-    adrPocket q;
     adrPokemon s;
     /*
     (Metode pengubahan string ke int)
@@ -64,19 +63,22 @@ int main()
             a = selectTrainer(T, id);
             break;
         case 4:
+            if(a != NULL){
             //ada masalah ketika idTrainernya kosong
-            {showTrainerDetail(T,L,info(a).idTrainer);
-            int i = 1;
-            while (i <= 151){
-                cout << info(a).pokedex[i] << ";";
-                i++;
-            }}
+            showTrainerDetail(T,L,info(a).idTrainer);
+            }else{
+                cout <<"[Non Exist Selected Trainer]\n";
+            }
             break;
         case 5:
+            if(a!=NULL){
             deleteFirstPocket(T, a);
             s = cariPokemon(L, RNGpokemon(L));
-            cout << "you Catch " << info(s).namaPokemon << endl;
+            cout << "> you Catch " << info(s).namaPokemon <<" <"<< endl;
             insertLastPocket(T,L,a,info(s).idPokemon);
+            }else{
+                cout <<"[Non Exist Selected Trainer]\n";
+            }
             break;
         case 6:
             cout <<"Masukan id Trainer: ";
