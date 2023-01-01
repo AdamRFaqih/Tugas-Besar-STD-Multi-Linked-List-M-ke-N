@@ -20,18 +20,19 @@
 	<stdbool.h>
 	"pokemon.h"
 
-1672520537 source:d:\personal\coolyeah\tahun 2\std\tugasbesarstrukturdata\tugas-besar-std-multi-linked-list-m-ke-n\trainer.cpp
+1672547386 source:d:\personal\coolyeah\tahun 2\std\tugasbesarstrukturdata\tugas-besar-std-multi-linked-list-m-ke-n\trainer.cpp
 	"trainer.h"
 
-1672520537 d:\personal\coolyeah\tahun 2\std\tugasbesarstrukturdata\tugas-besar-std-multi-linked-list-m-ke-n\trainer.h
+1672547386 d:\personal\coolyeah\tahun 2\std\tugasbesarstrukturdata\tugas-besar-std-multi-linked-list-m-ke-n\trainer.h
 	<sstream>
 	<time.h>
+	<stdbool.h>
 	"pokemon.h"
 
 1672483663 d:\personal\coolyeah\tahun 2\std\tugasbesarstrukturdata\tugas-besar-std-multi-linked-list-m-ke-n\pokemon.h
 	<iostream>
 
-1672518975 source:d:\personal\coolyeah\tahun 2\std\tugasbesarstrukturdata\tugas-besar-std-multi-linked-list-m-ke-n\main.cpp
+1672547386 source:d:\personal\coolyeah\tahun 2\std\tugasbesarstrukturdata\tugas-besar-std-multi-linked-list-m-ke-n\main.cpp
 	"trainer.h"
 
 1672483539 source:d:\personal\coolyeah\tahun 2\std\tugasbesarstrukturdata\tugas-besar-std-multi-linked-list-m-ke-n\pokemon.cpp
