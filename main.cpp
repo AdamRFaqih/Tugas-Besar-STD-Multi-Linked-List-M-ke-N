@@ -10,6 +10,11 @@ int main()
     /*TIPE 2 */         {"", "POISON","POISON","POISON","","","FLYING","","","","","","FLYING","POISON","POISON","POISON","FLYING","FLYING","FLYING","","","FLYING","FLYING","","","","","","","","","GROUND","","","GROUND","","","","","FAIRY","FAIRY","FLYING","FLYING","POISON","POISON","POISON","GRASS","GRASS","POISON","POISON","","","","","","","","","","","","","FIGHT","","","","","","","POISON","POISON","POISON","POISON","POISON","GROUND","GROUND","GROUND","","","PSYCHO","PSYCHO","STEEL","STEEL","FLYING","FLYING","FLYING","","ICE","","","","ICE","POISON","POISON","POISON","GROUND","","","","","","","PSYCHO","PSYCHO","","","","","","","","ROCK","ROCK","","","","","","","","","PSYCHO","FAIRY","FLYING","PSYCHO","","","","","","FLYING","ICE","","","","","","","WATER","WATER","WATER","WATER","FLYING","","FLYING","FLYING","FLYING","","","FLYING","",""}
     };
 
+    int numMenu = 1;
+    string id, nama, idtrainerM, idpokeM;
+    adrTrainer r,a;
+    a = NULL;
+    adrPokemon s;
     /*
     (Metode pengubahan string ke int)
     int r;
@@ -20,11 +25,86 @@ int main()
     cout << id;
     cout << r + 1;
     */
-
-
-    //Initialize Pokemon (show buat ngetes doang jadi bisa dihapus)
     ListPokemon L;
+    ListTrainer T;
+    first(T) = NULL;
     addPokemon(L, p);
-    showPokemon(L);
-
+    while(numMenu != 0){
+        //Spek Menu
+        cout <<"---------------------MENU-----------------------------" << endl;
+        cout <<"1. Add Trainer" << endl;
+        cout <<"2. Show Trainer" << endl;
+        cout <<"3. Select Trainer" << endl;
+        cout <<"4. Show Trainer Detail" << endl;
+        cout <<"5. Catch Pokemon" << endl;
+        cout <<"6. Trade Pokemon" << endl;
+        cout <<"7. Show All Pokemon" << endl;
+        cout <<"8. Delete Trainer" << endl;
+        cout <<"0. Exit" << endl;
+        cout <<"------------------------------------------------------" << endl;
+        cout << "Selected Trainer: " << selectedTrainer(a) << endl;
+        cout <<"Masukan Nomor Menu: ";
+        cin >> numMenu;
+        switch(numMenu){
+        case 1:
+            cout << "Masukan ID: ";
+            cin >> id;
+            cout <<"Masukan nama: ";
+            cin >> nama;
+            r = createNodeTrainer(id,nama);
+            insertLastTrainer(T, r);
+            break;
+        case 2:
+            showAllTrainer(T,L);
+            break;
+        case 3:
+            cout << "Masukan id: ";
+            cin >> id;
+            a = selectTrainer(T, id);
+            break;
+        case 4:
+            if(a != NULL){
+            //ada masalah ketika idTrainernya kosong
+            showTrainerDetail(T,L,info(a).idTrainer);
+            }else{
+                cout <<"[Non Exist Selected Trainer]\n";
+            }
+            break;
+        case 5:
+            if(a!=NULL){
+            deleteFirstPocket(T, a);
+            s = cariPokemon(L, RNGpokemon(L));
+            cout << "> you Catch " << info(s).namaPokemon <<" <"<< endl;
+            insertLastPocket(T,L,a,info(s).idPokemon);
+            }else{
+                cout <<"[Non Exist Selected Trainer]\n";
+            }
+            break;
+        case 6:
+            cout <<"Masukan id Trainer: ";
+            cin >> idtrainerM;
+            cout << "Masukan id pokemon yang ingin di trade: ";
+            cin >> idpokeM;
+            tradePokemonInPocket(T,L,idtrainerM,idpokeM);
+            break;
+        case 7:
+            showPokemon(L);
+            break;
+        case 8:
+            cout << "Masukan ID: ";
+            cin >> id;
+            deleteTrainer(T, id);
+            break;
+        }
+    }
+    cout <<"Game Ended" << endl;
 }
+
+/*BUG
+- gak nambah pocket pokemon
+- show all trainer ketika idnya ""
+-
+
+SOLUTION
+- buat semua adr dalam parameter menjadi null untuk inisialisasinya
+*/

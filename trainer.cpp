@@ -8,8 +8,11 @@ adrTrainer createNodeTrainer(string idTrainer, string namaTrainer){
     infoTrainer q;
     q.idTrainer = idTrainer;
     q.namaTrainer = namaTrainer;
-    q.pokedex[152] = {false};
-
+    int i = 0;
+    while(i != 152){
+        q.pokedex[i] = false;
+        i++;
+    }
 
     p = new nodeTrainer;
     info(p) = q;
@@ -52,13 +55,14 @@ bool checkPocket(adrTrainer pointTrainer){
         s++;
         p = next(p);
     }
-    if(s < 6){
+    if(s == 6){
         return true;
+    }else{
+        return false;
     }
-    return false;
 }
 void deleteFirstPocket(ListTrainer &L, adrTrainer pointTrainer){
-    if(checkPointTrainer(pointTrainer) != false && checkPocket(pointTrainer) != false){
+    if(checkPointTrainer(pointTrainer) == true && checkPocket(pointTrainer) == true){
         if(next(pocket(pointTrainer)) == NULL){
             pocket(pointTrainer) = NULL;
         }else{
@@ -67,8 +71,7 @@ void deleteFirstPocket(ListTrainer &L, adrTrainer pointTrainer){
             pocket(pointTrainer) = next(p);
             next(p) = NULL;
         }
-    }else{
-        cout <<"Pointer atau pocket false\n";
+        cout <<"-> One Pocket Sacrificed <- \n";
     }
 }
 //Mencari input idpokemon yang sama di idpokemon yang di trainer
@@ -110,7 +113,8 @@ adrPokemon cariPokemon(ListPokemon L, string idPokemon){
     return q;
 }
 void insertLastPocket(ListTrainer &L, ListPokemon S,adrTrainer pointTrainer,string idPokemon){
-    if(!checkDupe(pointTrainer, idPokemon)){
+    int r = 0;
+    if(checkDupe(pointTrainer, idPokemon) == false){
         adrPocket q = createNodePocket(S, idPokemon);
         if(pocket(pointTrainer) == NULL){
             pocket(pointTrainer) = q;
@@ -121,8 +125,11 @@ void insertLastPocket(ListTrainer &L, ListPokemon S,adrTrainer pointTrainer,stri
             }
             next(p) = q;
         }
+        stringstream chng(idPokemon);
+        chng >> r;
+        info(pointTrainer).pokedex[r] = true;
     }else{
-        cout <<"Pokemon Duplikat\n";
+        cout <<"-Pokemon Duplikat-\n";
     }
 }
 void showAllTrainer(ListTrainer L, ListPokemon M){
@@ -133,11 +140,11 @@ void showAllTrainer(ListTrainer L, ListPokemon M){
         adrPocket q;
         adrPokemon s;
         while(p != NULL){
-            cout << info(p).idTrainer << " " << info(p).namaTrainer<<"\nPokemon: ";
+            cout << "["<<info(p).idTrainer << "] " << "|"<<info(p).namaTrainer<<"|"<<"\nPokemon: ";
                 q = pocket(p);
                 while(q != NULL){
                     s = pocketPokemon(q);
-                    cout << info(s).namaPokemon << " / ";
+                    cout << "["<<info(s).idPokemon<<"]"<<"{" << info(s).namaPokemon << "} ";
                     q = next(q);
                 }
             cout << endl;
@@ -152,11 +159,11 @@ void showTrainerDetail(ListTrainer L, ListPokemon M, string idTrainer){
     }else{
         adrPocket q;
         adrPokemon s;
-        cout << info(p).idTrainer << " " << info(p).namaTrainer<<"\nPokemon: ";
+        cout << "["<<info(p).idTrainer << "] " << "|"<<info(p).namaTrainer<<"|"<<"\nPokemon: ";
         q = pocket(p);
         while(q != NULL){
             s = pocketPokemon(q);
-            cout << info(s).namaPokemon << " / ";
+            cout << "["<<info(s).idPokemon<<"]"<<"{" << info(s).namaPokemon << "} ";
             q = next(q);
         }
         //print pokedex punya trainer
@@ -169,13 +176,13 @@ void showTrainerPokedex(adrTrainer pilihanTrainer){
     int i,r;
     i = 1;
     r = 0;
-    while(i <= 152){
+    while(i <= 151){
         if(info(pilihanTrainer).pokedex[i] == true){
             r++;
         }
         i++;
     }
-    cout <<"Pokemon Completion: " <<(r/152) * 0.01 << endl;
+    cout <<"Pokemon Completion: " << r << "%\n";
 }
 
 //Pengecekan idpokemon di pocket milik trainer
@@ -192,13 +199,11 @@ void tradePokemonInPocket(ListTrainer &L, ListPokemon &M, string idTrainer, stri
     p = selectTrainer(L, idTrainer);
     cout <<"Masukan id Trainer yang akan menjadi target trade: ";
     cin >> r;
-    cout << endl;
     //adrTrainer 2
     q = selectTrainer(L, r);
     if(p != NULL && q != NULL){
         cout <<"Masukan id pokemon yang akan menjadi target trade: ";
         cin >> rr;
-        cout << endl;
         //Pengecekan pokemon trainer 1 ada di pocket
         z = checkDupe(p,idPokemon);
         //Pengecekan pokemon trainer 2 ada di pocket
@@ -229,6 +234,7 @@ void tradePokemonInPocket(ListTrainer &L, ListPokemon &M, string idTrainer, stri
                     }
                     h = next(h);
                 }
+                cout <<"Trade Berhasil\n";
             }else{
                 cout <<"Salah satu Pokemon duplikat!\n";
             }
@@ -243,7 +249,7 @@ void tradePokemonInPocket(ListTrainer &L, ListPokemon &M, string idTrainer, stri
 string RNGpokemon(ListPokemon M){
     int i,randomNum;
     srand (time(NULL));
-    randomNum = rand() % 4;
+    randomNum = rand() % 151;
     adrPokemon p = first(M);
     i = 1;
     while(i <= randomNum){
@@ -253,5 +259,50 @@ string RNGpokemon(ListPokemon M){
     return info(p).idPokemon;
 }
 
+string selectedTrainer(adrTrainer selectedS){
+    if(selectedS == NULL){
+        return "";
+    }else{
+        return info(selectedS).namaTrainer;
+    }
+}
 
+void deleteFirstTrainer(ListTrainer &L){
+    adrTrainer P = first(L);
+    first(L) = next(first(L));
+    next(P) = NULL;
+}
 
+void deleteLastTrainer(ListTrainer &L){
+    adrTrainer P = first(L), Q = first(L);
+    while (next(P) != NULL){
+        Q = P;
+        P = next(P);
+    }
+    next(Q) = NULL;
+}
+
+void deleteAfterTrainer(ListTrainer &L, string idTrainer){
+    adrTrainer P = first(L), Q = first(L);
+    while (info(P).idTrainer != idTrainer){
+        Q = P;
+        P = next(P);
+    }
+    next(Q) = next(next(P));
+    next(P) = NULL;
+}
+
+void deleteTrainer(ListTrainer &L, string idTrainer){
+    adrTrainer P = first(L);
+    while (next(P) != NULL){
+        P = next(P);
+    }
+    if (info(first(L)).idTrainer == idTrainer){
+        deleteFirstTrainer(L);
+    }else if (info(P).idTrainer == idTrainer){
+        deleteLastTrainer(L);
+    }else{
+        deleteAfterTrainer(L, idTrainer);
+    }
+    cout << "Delete Trainer Berhasil!\n";
+}
