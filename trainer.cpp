@@ -1,5 +1,18 @@
 #include "trainer.h"
 
+bool checkTrainerID(ListTrainer L, string idTrainer){
+    if(stringToInt(idTrainer) < 0){
+        return false;
+    }
+    adrTrainer F = first(L);
+    while(next(F) != NULL){
+        if(info(F).idTrainer == idTrainer){
+            return false;
+        }
+    }
+    return true;
+}
+
 void createListTrainer(ListTrainer &L){
     first(L) = NULL;
 }
@@ -305,4 +318,12 @@ void deleteTrainer(ListTrainer &L, string idTrainer){
         deleteAfterTrainer(L, idTrainer);
     }
     cout << "Delete Trainer Berhasil!\n";
+}
+
+int stringToInt(string x){
+    int r;
+    stringstream obj;
+    obj << x;
+    obj >> r;
+    return r;
 }

@@ -35,6 +35,7 @@ struct ListTrainer{
     adrTrainer first;
 };
 
+bool checkTrainerID(ListTrainer L, string idTrainer);
 void createListTrainer(ListTrainer &L);
 adrTrainer createNodeTrainer(string idTrainer, string namaTrainer);
 void insertLastTrainer(ListTrainer &L, adrTrainer newTrainer);
@@ -56,6 +57,6 @@ string selectedTrainer(adrTrainer selectedS);
 void deleteFirstTrainer(ListTrainer &L);
 void deleteLastTrainer(ListTrainer &L);
 void deleteTrainer(ListTrainer &L, string idTrainer);
-
+int stringToInt(string x);
 
 #endif // TRAINER_H_INCLUDED

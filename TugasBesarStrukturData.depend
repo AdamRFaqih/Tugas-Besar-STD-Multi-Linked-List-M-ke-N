@@ -38,3 +38,21 @@
 1672483539 source:d:\personal\coolyeah\tahun 2\std\tugasbesarstrukturdata\tugas-besar-std-multi-linked-list-m-ke-n\pokemon.cpp
 	"pokemon.h"
 
+1692001926 source:c:\users\pc-lab-1\documents\folder aslab\adam\tugas-besar-std-multi-linked-list-m-ke-n\pokemon.cpp
+	"pokemon.h"
+
+1692001926 c:\users\pc-lab-1\documents\folder aslab\adam\tugas-besar-std-multi-linked-list-m-ke-n\pokemon.h
+	<iostream>
+
+1692002451 source:c:\users\pc-lab-1\documents\folder aslab\adam\tugas-besar-std-multi-linked-list-m-ke-n\main.cpp
+	"trainer.h"
+
+1692002579 c:\users\pc-lab-1\documents\folder aslab\adam\tugas-besar-std-multi-linked-list-m-ke-n\trainer.h
+	<sstream>
+	<time.h>
+	<stdbool.h>
+	"pokemon.h"
+
+1692002686 source:c:\users\pc-lab-1\documents\folder aslab\adam\tugas-besar-std-multi-linked-list-m-ke-n\trainer.cpp
+	"trainer.h"
+

@@ -49,6 +49,10 @@ int main()
         case 1:
             cout << "Masukan ID: ";
             cin >> id;
+            while(!checkTrainerID(T, id)){
+                cout << "ID tidak valid, masukan id: ";
+                cin >> id;
+            }
             cout <<"Masukan nama: ";
             cin >> nama;
             r = createNodeTrainer(id,nama);
